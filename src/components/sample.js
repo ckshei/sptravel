@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Fetch from 'react-fetch'
 
-class TripOptions extends Component {
+export default class TripOptions extends Component {
   constructor() {
     super(); 
   
@@ -21,3 +21,4 @@ class TripOptions extends Component {
   ) 
   }  
 }
+
