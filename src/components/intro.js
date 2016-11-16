@@ -5,7 +5,7 @@ export default class Intro extends Component {
     return (
     <div>
       <p> A website for spontaneous adventurerers blah finding last minute flights and blah blah </p>
-      <button> Let's get started </button>
+      <button onClick={this.props.handleClick}> Let's get started </button>
     </div>
   ); 
   }  
