@@ -1,5 +1,5 @@
 export function changeToDeparture() {
   return {
-    type: 'RENDER_DEPARTURE', 
+    type: 'RENDER_DEPARTURE'
   };
 }

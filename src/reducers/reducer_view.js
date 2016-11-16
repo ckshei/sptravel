@@ -1,7 +1,7 @@
 export default function(state = {view: 'intro'}, action) {
   switch(action.type) {
-    case 'changeToDeparture':
-      return {view: "departure"}
+    case 'RENDER_DEPARTURE':
+      return "departure"
     default:
       return state
   }

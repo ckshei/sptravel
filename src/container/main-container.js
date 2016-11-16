@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import changeToDeparture from '../actions/index'
+import { changeToDeparture } from '../actions/index'
 import { bindActionCreators } from 'redux';
 import Intro from '../components/intro'
 import Departure from '../components/departure'
@@ -11,6 +11,8 @@ import Show from '../components/show'
 class MainContainer extends Component {
   renderView() {
     switch(this.props.view) {
+      case 'departure':
+        return <Departure />
       default:
         return <Intro 
           handleClick={this.props.changeToDeparture}
@@ -30,8 +32,11 @@ class MainContainer extends Component {
 function mapStateToProps(state) {
   return {
     view: state.view,
-    changeToDeparture: () => console.log("hi")
   };
 } 
 
-export default connect(mapStateToProps)(MainContainer);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ changeToDeparture: changeToDeparture }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainContainer);
