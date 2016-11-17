@@ -1,4 +1,4 @@
-import axios from 'axios';
+import fetchJsonp from 'fetch-jsonp';
 
 const API_KEY = 'sp228916872664231778662139964184';
 const CITY_URL = `http://partners.api.skyscanner.net/apiservices/autosuggest/v1.0/US/USD/en-US?query=`;
@@ -8,11 +8,9 @@ export const FETCH_CITIES = 'FETCH_CITIES';
 
 export function fetchCities(city) {
   const url = `${CITY_URL}${city}&apiKey=${API_KEY}`
-  const request = axios({
-    method: 'get',
-    url: url, 
-    head: {'Content-Type': 'JSON' } 
-  });
+
+  const request = fetchJsonp(url)
+  .then(res => console.log(res))
 
   return {
     type: FETCH_CITIES,

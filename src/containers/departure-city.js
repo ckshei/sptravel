@@ -12,7 +12,7 @@ class DepartureCity extends Component {
 
   onInputChange(ev) {
     this.setState({ term: ev.target.value });
-    this.props.fetchCities(this.state.term);
+    this.props.fetchCities(ev.target.value);
   }
 
   onFormSubmit(ev) {
