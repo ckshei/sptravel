@@ -5,7 +5,7 @@ export default class Dates extends Component {
     return (
     <div>
       <input type="text" value="What is your budget?" />
-      <button> Confirm </button>
+      <button onClick={() => this.props.handleClick()}> Confirm </button>
       <p>Recommended Budget: Insert Recommended</p>
       <p>Minimum Budget: Insert Min</p>
     </div>

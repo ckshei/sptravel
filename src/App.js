@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import MainContainer from './container/main-container';
-import TripOptions from './container/trip-options'
+import MainContainer from './containers/main-container';
+import TripOptions from './containers/trip-options'
 import './App.css';
 
 class App extends Component {

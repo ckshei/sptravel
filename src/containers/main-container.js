@@ -1,18 +1,30 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { changeToDeparture } from '../actions/index'
+
+// importing render actions
+import { changeToDeparture, changeToDate, changeToBudget, changeToResult } from '../actions/index'
 import { bindActionCreators } from 'redux';
 import Intro from '../components/intro'
-import Departure from '../components/departure'
-import Dates from '../components/dates'
+import DepartureCity from './departure-city'
+import Date from '../components/date'
 import Budget from '../components/budget'
-import Show from '../components/show'
+import Result from '../components/result'
 
 class MainContainer extends Component {
   renderView() {
     switch(this.props.view) {
       case 'departure':
-        return <Departure />
+        return <DepartureCity />
+      case 'date':
+        return <Date
+          handleClick={this.props.changeToBudget}
+        />
+      case 'budget':
+        return <Budget
+          handleClick={this.props.changeToResult}
+        />
+      case 'result':
+        return <Result />
       default:
         return <Intro 
           handleClick={this.props.changeToDeparture}
@@ -26,7 +38,7 @@ class MainContainer extends Component {
         {this.renderView()}
       </div>
     );
-  }  
+  }
 }
 
 function mapStateToProps(state) {
@@ -36,7 +48,7 @@ function mapStateToProps(state) {
 } 
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ changeToDeparture: changeToDeparture }, dispatch)
+  return bindActionCreators({ changeToDeparture: changeToDeparture, changeToDate: changeToDate, changeToBudget: changeToBudget, changeToResult: changeToResult }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainContainer);
