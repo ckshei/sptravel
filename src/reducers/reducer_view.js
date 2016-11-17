@@ -1,4 +1,4 @@
-export default function(state = {view: 'intro'}, action) {
+export default function(state = null, action) {
   switch(action.type) {
     case 'RENDER_DEPARTURE':
       return "departure"

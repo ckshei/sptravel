@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { fetchCities } from '../actions/index'
 
-export default class DepartureCity extends Component {
+class DepartureCity extends Component {
   constructor(props) {
     super(props);
     this.state = { term: '' };
@@ -9,6 +12,7 @@ export default class DepartureCity extends Component {
 
   onInputChange(ev) {
     this.setState({ term: ev.target.value });
+    this.props.fetchCities(this.state.term);
   }
 
   onFormSubmit(ev) {
@@ -25,3 +29,9 @@ export default class DepartureCity extends Component {
   ); 
   }  
 }
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ fetchCities }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(DepartureCity);
