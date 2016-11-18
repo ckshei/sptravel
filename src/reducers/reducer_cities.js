@@ -1,11 +1,10 @@
-export default function(state = null, action) {
-  console.log('Action received', action);
+import { FETCH_CITIES } from '../actions/fetch_cities'
 
-  return state;
+export default function(state = null, action) {
+  switch(action.type) {
+    case FETCH_CITIES:
+      return action.payload
+    default: 
+      return state 
+  }  
 }
- // switch(action.type) {
- //    case 'FETCH_CITIES':
- //      return action.payload
- //    default: 
- //      return state 
- //  }  

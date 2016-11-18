@@ -8,7 +8,7 @@ class DepartureCity extends Component {
     super(props);
     this.state = { term: '' };
     this.onInputChange = this.onInputChange.bind(this);
-    this.renderCities = this.renderCities.bind(this)
+    this.renderCities = this.renderCities.bind(this);
   }
 
   onInputChange(ev) {
@@ -21,10 +21,10 @@ class DepartureCity extends Component {
   }
 
   renderCities() {
-    if (this.state.cities) {
-      'render cities'
+    if (this.props.cities && this.props.cities.length >= 1) {
+      return this.props.cities.map((city) => city.PlaceName)
     } else {
-      'no cities to be rendered' 
+      return 'no cities to be rendered' 
     }
   }
 
