@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchCities } from '../actions/index'
+import { fetchCities } from '../actions/fetch_cities'
 
 class DepartureCity extends Component {
   constructor(props) {
