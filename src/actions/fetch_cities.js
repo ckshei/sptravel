@@ -1,6 +1,6 @@
 import fetchJsonp from 'fetch-jsonp';
 
-const API_KEY = 'sp228916872664231778662139964184';
+export const API_KEY = 'sp228916872664231778662139964184';
 const CITY_URL = `http://partners.api.skyscanner.net/apiservices/xd/autosuggest/v1.0/US/USD/en-US?query=`;
 export const FETCH_CITIES = 'FETCH_CITIES';
 
