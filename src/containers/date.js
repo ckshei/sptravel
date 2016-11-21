@@ -8,7 +8,7 @@ const today = new Date()
 class TravelDate extends Component {
   constructor(props) {
     super(props);
-    this.state = { departureDate: today, returnDate: '' }
+    this.state = { departureDate: today.toISOString().substring(0, 10), returnDate: '' }
     this.onDepartureChange = this.onDepartureChange.bind(this);
     this.onReturnChange = this.onReturnChange.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
