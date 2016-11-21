@@ -36,7 +36,7 @@ class DepartureCity extends Component {
     <form onSubmit={this.onFormSubmit}>
       Departing From:
       <input type='text' placeholder="Departure City" value={this.state.term} onChange={this.onInputChange} />
-      <button type="submit"> Confirm </button>
+      <button type="submit"> Confirming </button>
       {this.renderCities()}
     </form>
   ); 
