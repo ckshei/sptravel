@@ -7,7 +7,7 @@ import { changeToDate } from '../actions/index'
 class DepartureCity extends Component {
   constructor(props) {
     super(props);
-    this.state = { term: '' };
+    this.state = { city: '' };
     this.onInputChange = this.onInputChange.bind(this);
     this.renderCities = this.renderCities.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
@@ -20,24 +20,37 @@ class DepartureCity extends Component {
 
   onFormSubmit(ev) {
     ev.preventDefault();
-    this.props.changeToDate();
+    console.log(this.state.city)
+    // this.props.changeToDate();
   }
 
   renderCities() {
     if (this.props.cities && this.props.cities.length >= 1) {
-      return this.props.cities.map((city) => city.PlaceName)
+      return this.props.cities.map((city) => {
+        return(
+          <option value={city.PlaceName} key={city.PlaceId}>{city.PlaceId}</option>
+        )
+      })
     } else {
       return 'no cities to be rendered' 
     }
+  }
+
+  handleClick(ev) {
+    this.setState({
+      city: ev.target.value
+    })
   }
 
   render() {
     return (
     <form onSubmit={this.onFormSubmit}>
       Departing From:
-      <input type='text' placeholder="Departure City" value={this.state.term} onChange={this.onInputChange} />
+      <input list="cities" placeholder="Departure City" value={this.state.term} onChange={this.onInputChange} />
       <button type="submit"> Confirming </button>
-      {this.renderCities()}
+      <datalist id="cities" onClick={this.handleClick}>
+        {this.renderCities()}
+      </datalist>
     </form>
   ); 
   }  
