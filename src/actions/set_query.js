@@ -10,25 +10,22 @@ export function setCity(city) {
   };
 }
 
-export function setDeparture(departure) {
+export function setDeparture(departureDate) {
   return {
     type: SET_DEPARTURE,
-    payload: departure
+    payload: departureDate
   };
 }
 
-export function setReturn(return) {
+export function setReturn(returnDate) {
   return {
     type: SET_RETURN,
-    payload: return
+    payload: returnDate
   };
 }
-
 export function setBudget(budget) {
   return {
   type: SET_BUDGET,
   payload: budget
   };
 }
-
-
