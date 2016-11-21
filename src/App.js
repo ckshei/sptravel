@@ -11,6 +11,7 @@ class App extends Component {
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Travel Roulette</h2>
+          <h3> Made with awesomeness </h3>
         </div>
         <TripOptions />
         <MainContainer />
