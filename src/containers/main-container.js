@@ -6,7 +6,7 @@ import { changeToDeparture, changeToDate, changeToBudget, changeToResult } from 
 import { bindActionCreators } from 'redux';
 import Intro from '../components/intro'
 import DepartureCity from './departure-city'
-import Date from '../containers/date'
+import TravelDate from '../containers/date'
 import Budget from '../containers/budget'
 import Result from '../components/result'
 
@@ -16,7 +16,7 @@ class MainContainer extends Component {
       case 'departure':
         return <DepartureCity />
       case 'date':
-        return <Date
+        return <TravelDate
           handleClick={this.props.changeToBudget}
         />
       case 'budget':

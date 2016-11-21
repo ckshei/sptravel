@@ -43,7 +43,7 @@ class DepartureCity extends Component {
       Departing From:
       <input list="cities" placeholder="Departure City" value={this.state.term} onChange={this.onInputChange} />
       <button type="submit"> Confirming </button>
-      <datalist id="cities" onSelect={this.handleClick}>
+      <datalist id="cities">
         {this.renderCities()}
       </datalist>
     </form>
