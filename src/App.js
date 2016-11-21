@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import MainContainer from './containers/main-container';
-import TripOptions from './containers/trip-options'
 import './App.css';
 
 class App extends Component {
@@ -13,7 +12,6 @@ class App extends Component {
           <h2>Travel Roulette</h2>
           <h3> Made with awesomeness </h3>
         </div>
-        <TripOptions />
         <MainContainer />
       </div>
     );

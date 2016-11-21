@@ -11,6 +11,7 @@ export function setCity(city) {
 }
 
 export function setDeparture(departureDate) {
+  console.log(departureDate)
   return {
     type: SET_DEPARTURE,
     payload: departureDate

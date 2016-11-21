@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { setDeparture, setReturn } from '../actions/set_query'
 import { changeToBudget } from '../actions/index'
+import { fetchTrips } from '../actions/fetch_trips'
 
 const today = new Date()
 class TravelDate extends Component {
@@ -14,17 +15,18 @@ class TravelDate extends Component {
     this.onFormSubmit = this.onFormSubmit.bind(this);
 }
   onDepartureChange(ev) {
-    this.setState({ departureDate: ev.target.value });
+    this.setState({ departureDate: ev.target.value })
+    this.props.setDeparture(ev.target.value);
   }
   
   onReturnChange(ev) {
     this.setState({ returnDate: ev.target.value });
+    this.props.setReturn(ev.target.value);
   }
 
   onFormSubmit(ev) {
     ev.preventDefault();
-    this.props.setDeparture(this.state.departureDate);
-    this.props.setReturn(this.state.returnDate);
+    this.props.fetchTrips(this.props.city, this.state.departureDate, this.state.returnDate)
     this.props.changeToBudget();
   }
 
@@ -39,8 +41,17 @@ class TravelDate extends Component {
   }  
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ setDeparture, setReturn, changeToBudget }, dispatch);
+function mapStateToProps(state) {
+  return {
+  city: state.query.city,
+  departureDate: state.query.departureDate,
+  returnDate: state.query.returnDate
+  }
 }
 
-export default connect(null, mapDispatchToProps)(TravelDate);
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ setDeparture, setReturn, changeToBudget, fetchTrips }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TravelDate);

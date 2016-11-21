@@ -1,8 +1,10 @@
-export default function() {
-  return [
-    {destination: 'Jaco', price: '35'},
-    {destination: 'Punta Cana', price: '29'},
-    {destination: 'Colorado', price: '105'},
-    {destination: 'New York', price: '86'}
-  ]
+import { FETCH_TRIPS } from '../actions/fetch_trips.js'
+
+export default function(state = null, action) {
+  switch(action.type) {
+  case FETCH_TRIPS:
+    return {trips: action.payload}
+  default:
+    return state
+  }
 }

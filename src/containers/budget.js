@@ -4,20 +4,26 @@ import { connect } from 'react-redux'
 class Budget extends Component {
   constructor(props) {
     super(props);  
-
+    this.state = { budget:"" };
   }
 
   render() {
     return (
-    <div>
+      <form>
+        {console.log(this.props.trips)}
       <input type="text" value="What is your budget?" />
       <button onClick={() => this.props.handleClick()}> Confirm </button>
       <p>Recommended Budget: Insert Recommended</p>
       <p>Minimum Budget: Insert Min</p>
-    </div>
-
+      </form>
   ); 
   }  
 }
 
-export default connect(null, null)(Budget);
+function mapStateToProps(state) {
+  return {
+    trips: state.trips 
+  }
+}
+
+export default connect(mapStateToProps, null)(Budget);
