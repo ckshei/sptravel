@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-class Dates extends Component {
+class Budget extends Component {
   constructor(props) {
     super(props);  
 
@@ -19,3 +19,5 @@ class Dates extends Component {
   ); 
   }  
 }
+
+export default connect(null, null)(Budget);
