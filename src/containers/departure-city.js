@@ -3,11 +3,12 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchCities } from '../actions/fetch_cities'
 import { changeToDate } from '../actions/index'
+import { setCity } from '../actions/set_query'
 
 class DepartureCity extends Component {
   constructor(props) {
     super(props);
-    this.state = { city: '' };
+    this.state = { term: '', city: '' };
     this.onInputChange = this.onInputChange.bind(this);
     this.renderCities = this.renderCities.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
@@ -20,26 +21,20 @@ class DepartureCity extends Component {
 
   onFormSubmit(ev) {
     ev.preventDefault();
-    console.log(this.state.city)
-    // this.props.changeToDate();
+    this.props.setCity(this.state.term);
+    this.props.changeToDate();
   }
 
   renderCities() {
     if (this.props.cities && this.props.cities.length >= 1) {
       return this.props.cities.map((city) => {
         return(
-          <option value={city.PlaceName} key={city.PlaceId}>{city.PlaceId}</option>
+          <option value={city.PlaceId} key={city.PlaceId}>{city.PlaceName}</option>
         )
       })
     } else {
       return 'no cities to be rendered' 
     }
-  }
-
-  handleClick(ev) {
-    this.setState({
-      city: ev.target.value
-    })
   }
 
   render() {
@@ -48,7 +43,7 @@ class DepartureCity extends Component {
       Departing From:
       <input list="cities" placeholder="Departure City" value={this.state.term} onChange={this.onInputChange} />
       <button type="submit"> Confirming </button>
-      <datalist id="cities" onClick={this.handleClick}>
+      <datalist id="cities" onSelect={this.handleClick}>
         {this.renderCities()}
       </datalist>
     </form>
@@ -63,7 +58,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchCities, changeToDate }, dispatch);
+  return bindActionCreators({ fetchCities, changeToDate, setCity }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DepartureCity);
