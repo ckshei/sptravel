@@ -23,7 +23,9 @@ class TravelDate extends Component {
 
   onFormSubmit(ev) {
     ev.preventDefault();
-    console.log(this.state.departureDate, this.state.returnDate);
+    this.props.setDeparture(this.state.departureDate);
+    this.props.setReturn(this.state.returnDate);
+    this.props.changeToBudget();
   }
 
   render() {
