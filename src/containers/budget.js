@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-export default class Dates extends Component {
+class Dates extends Component {
+  constructor(props) {
+    super(props);  
+
+  }
+
   render() {
     return (
     <div>
