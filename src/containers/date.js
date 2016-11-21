@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { setDeparture, setReturn } from '../actions/set_query'
+import { changeToBudget } from '../actions/index'
 
 const today = new Date()
 class TravelDate extends Component {
@@ -29,9 +31,14 @@ class TravelDate extends Component {
     <form onSubmit={this.onFormSubmit}>
       Departure: <input onChange={this.onDepartureChange} value={this.state.departureDate} type="date" />
       Return: <input onChange={this.onReturnChange} value={this.state.returnDate} type="date" />
+      <button type='submit'> Confirm </button>
     </form>
   ); 
   }  
 }
 
-export default connect(null, null)(TravelDate);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ setDeparture, setReturn, changeToBudget }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(TravelDate);
