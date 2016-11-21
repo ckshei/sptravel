@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchCities } from '../actions/fetch_cities'
+import { changeToDate } from '../actions/index'
 
 class DepartureCity extends Component {
   constructor(props) {
@@ -9,6 +10,7 @@ class DepartureCity extends Component {
     this.state = { term: '' };
     this.onInputChange = this.onInputChange.bind(this);
     this.renderCities = this.renderCities.bind(this);
+    this.onFormSubmit = this.onFormSubmit.bind(this);
   }
 
   onInputChange(ev) {
@@ -18,6 +20,7 @@ class DepartureCity extends Component {
 
   onFormSubmit(ev) {
     ev.preventDefault();
+    this.props.changeToDate();
   }
 
   renderCities() {
@@ -47,7 +50,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchCities }, dispatch);
+  return bindActionCreators({ fetchCities, changeToDate }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DepartureCity);
