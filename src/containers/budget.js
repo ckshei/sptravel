@@ -4,16 +4,27 @@ import { connect } from 'react-redux'
 class Budget extends Component {
   constructor(props) {
     super(props);  
-    this.state = { budget:"" };
+    this.handleChange = this.handleChange.bind(this)
+    this.state = { 
+    budget:"",
+ };
   }
 
-  renderQ
+  handleChange(ev) {
+    this.setState({budget: ev.target.value}) 
+  }
+
+  renderQ() {
+    if (this.props.trips) {
+      console.log(this.props.trips.Quotes) 
+    } 
+  }
 
   render() {
     return (
       <form>
-      {this.renderQ}
-      <input type="text" value="What is your budget?" />
+      {this.renderQ()}
+      <input type="text" onChange={this.handleChange} value={this.state.budget} />
       <button onClick={() => this.props.handleClick()}> Confirm </button>
       <p>Recommended Budget: Insert Recommended</p>
       <p>Minimum Budget: Insert Min</p>
