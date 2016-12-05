@@ -7,10 +7,12 @@ class Budget extends Component {
     this.state = { budget:"" };
   }
 
+  renderQ
+
   render() {
     return (
       <form>
-        {console.log(this.props.trips)}
+      {this.renderQ}
       <input type="text" value="What is your budget?" />
       <button onClick={() => this.props.handleClick()}> Confirm </button>
       <p>Recommended Budget: Insert Recommended</p>
